@@ -15,6 +15,7 @@ const root = createRoot(domNode);
 
 const App = () => {
 	const [openSidebar, setSidebar] = useState(false);
+	const [appState, setAppState] = useState(defaultArticleState);
 	const toggleSidebar = () => {
 		setSidebar(openSidebar === false ? true : false);
 	};
@@ -33,8 +34,13 @@ const App = () => {
 					'--bg-color': defaultArticleState.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm click={toggleSidebar} open={openSidebar}/>
-			<Article click={closeSidebar}/>
+			<ArticleParamsForm
+				click={toggleSidebar}
+				open={openSidebar}
+				articleState={appState}
+				setAppState={setAppState}
+			/>
+			<Article click={closeSidebar} />
 		</div>
 	);
 };

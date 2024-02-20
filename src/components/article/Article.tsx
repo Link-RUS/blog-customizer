@@ -8,11 +8,11 @@ import styles from './Article.module.scss';
 /** Функция для обработки открытия/закрытия формы */
 export type OnClick = () => void;
 
-type ArticleParamsFormProps = {
+type ArticleProps = {
 	click: OnClick;
 };
 
-export const Article = (props: ArticleParamsFormProps) => {
+export const Article = (props: ArticleProps) => {
 	return (
 		<article className={clsx(styles.article)} onClick={props.click}>
 			<Text as='h1' size={45} weight={800} uppercase dynamicLite>
