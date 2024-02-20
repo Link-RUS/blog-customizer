@@ -31,7 +31,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 	const [newState, setNewState] = useState(articleState);
 	const onReset = (e: FormEvent) => {
 		e.preventDefault();
-		setAppState(defaultArticleState);
+		setNewState(defaultArticleState);
 	};
 
 	const onSubmit = (e: FormEvent) => {
