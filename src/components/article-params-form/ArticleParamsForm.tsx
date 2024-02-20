@@ -3,11 +3,21 @@ import { Button } from 'components/button';
 
 import styles from './ArticleParamsForm.module.scss';
 
-export const ArticleParamsForm = () => {
+type ArticleParamsFormProps = {
+	open: boolean;
+	click: OnClick;
+};
+/** Функция для обработки открытия/закрытия формы */
+export type OnClick = () => void;
+
+export const ArticleParamsForm = (props:ArticleParamsFormProps) => {
 	return (
 		<>
-			<ArrowButton />
-			<aside className={styles.container}>
+			<ArrowButton click={props.click} open={props.open} />
+			<aside
+				className={`${styles.container} ${
+					props.open ? styles.container_open : ''
+				}`}>
 				<form className={styles.form}>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' />

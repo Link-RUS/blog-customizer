@@ -8,11 +8,19 @@ import { defaultArticleState } from './constants/articleProps';
 
 import './styles/index.scss';
 import styles from './styles/index.module.scss';
+import { useState } from 'react';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
 
 const App = () => {
+	const [openSidebar, setSidebar] = useState(false);
+	const toggleSidebar = () => {
+		setSidebar(openSidebar === false ? true : false);
+	};
+	const closeSidebar = () => {
+		setSidebar(false);
+	};
 	return (
 		<div
 			className={clsx(styles.main)}
@@ -25,8 +33,8 @@ const App = () => {
 					'--bg-color': defaultArticleState.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm />
-			<Article />
+			<ArticleParamsForm click={toggleSidebar} open={openSidebar}/>
+			<Article click={closeSidebar}/>
 		</div>
 	);
 };
