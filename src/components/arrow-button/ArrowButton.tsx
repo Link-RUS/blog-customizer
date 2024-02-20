@@ -2,7 +2,6 @@ import arrow from 'src/images/arrow.svg';
 
 import styles from './ArrowButton.module.scss';
 
-import { useState } from 'react';
 type ArrowButtonProps = {
 	open: boolean;
 	click: OnClick;
@@ -21,9 +20,11 @@ export const ArrowButton = (props: ArrowButtonProps) => {
 				props.open ? styles.container_open : ''
 			}`}
 			onClick={props.click}>
-			<img src={arrow} alt='иконка стрелочки' className={`${styles.arrow} ${
-				props.open ? styles.arrow_open : ''
-			}`} />
+			<img
+				src={arrow}
+				alt='иконка стрелочки'
+				className={`${styles.arrow} ${props.open ? styles.arrow_open : ''}`}
+			/>
 		</div>
 	);
 };
