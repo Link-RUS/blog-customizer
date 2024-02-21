@@ -13,9 +13,10 @@ import {
 	contentWidthArr,
 	OptionType,
 } from 'src/constants/articleProps';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useRef, useEffect } from 'react';
 
 import styles from './ArticleParamsForm.module.scss';
+import { useClose } from 'src/hooks/useClose';
 
 type ArticleParamsFormProps = {
 	open: boolean;
@@ -29,6 +30,9 @@ export type OnClick = () => void;
 export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 	const { open, click, articleState, setAppState } = props;
 	const [newState, setNewState] = useState(articleState);
+	const ref = useRef(null);
+	useClose({ isOpen: open, onClose: click, rootRef: ref });
+
 	const onReset = (e: FormEvent) => {
 		e.preventDefault();
 		setNewState(defaultArticleState);
@@ -47,6 +51,7 @@ export const ArticleParamsForm = (props: ArticleParamsFormProps) => {
 		<>
 			<ArrowButton click={click} open={open} />
 			<aside
+				ref={ref}
 				className={`${styles.container} ${open ? styles.container_open : ''}`}>
 				<form className={styles.form} onReset={onReset} onSubmit={onSubmit}>
 					<p className={styles.header}>Задайте параметры</p>

@@ -39,7 +39,7 @@ const App = () => {
 				articleState={appState}
 				setAppState={setAppState}
 			/>
-			<Article click={closeSidebar} />
+			<Article />
 		</div>
 	);
 };

@@ -5,16 +5,11 @@ import plane from 'src/images/plane.png';
 import { Text } from 'components/text';
 
 import styles from './Article.module.scss';
-/** Функция для обработки открытия/закрытия формы */
-export type OnClick = () => void;
 
-type ArticleProps = {
-	click: OnClick;
-};
 
-export const Article = (props: ArticleProps) => {
+export const Article = () => {
 	return (
-		<article className={clsx(styles.article)} onClick={props.click}>
+		<article className={clsx(styles.article)}>
 			<Text as='h1' size={45} weight={800} uppercase dynamicLite>
 				Портрет Западной Швейцарии
 			</Text>
